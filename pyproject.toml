@@ -1,0 +1,47 @@
+[project]
+name = "live-interpreter"
+version = "0.1.0"
+description = "Local, real-time English-to-Chinese subtitles for meetings and videos on Windows"
+requires-python = ">=3.11,<3.12"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "sihy233" }]
+keywords = [
+    "speech-translation",
+    "simultaneous-interpretation",
+    "whisper",
+    "hunyuan-mt",
+    "subtitles",
+    "windows",
+    "ollama",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Win32 (MS Windows)",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Multimedia :: Sound/Audio :: Speech",
+    "Topic :: Text Processing :: Linguistic",
+]
+dependencies = [
+    "faster-whisper>=1.1.0",
+    "sounddevice>=0.5.1",
+    "webrtcvad-wheels>=2.0.14",
+    "numpy>=1.26",
+    "ollama>=0.6.0",
+    "rich>=13.9",
+    "truststore>=0.10",
+    "soundcard>=0.4.6",
+]
+
+[project.urls]
+Homepage = "https://github.com/sihy233/live-interpreter"
+Repository = "https://github.com/sihy233/live-interpreter"
+Issues = "https://github.com/sihy233/live-interpreter/issues"
+
+[dependency-groups]
+dev = ["pytest>=8.3"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
