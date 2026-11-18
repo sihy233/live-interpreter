@@ -64,12 +64,14 @@ start.bat --source system --overlay
 
 第一次会自动下载便携 Ollama、Hunyuan-MT-7B、cuDNN 和 faster-whisper 模型，并创建 Ollama 模型。看到 `开始监听（Ctrl+C 退出）...` 后，播放英文视频或加入英文会议即可。
 
+> **会议场景最省事：直接双击 `meeting.bat`。** 它等价于 `start.bat --source system --overlay --overlay-font-size 30`。
+
 > **默认是麦克风模式。** 会议/视频场景一定要加 `--source system`，否则会去录房间里的声音。
 
 ### 三种典型用法
 
 ```bat
-:: 看英语视频 / 线上会议：捕获系统声音 + 置顶字幕
+:: 会议/视频：直接双击 meeting.bat，或：
 start.bat --source system --overlay
 
 :: 线下会议 / 面对面：用麦克风
@@ -77,6 +79,26 @@ start.bat --source mic --overlay
 
 :: 用测试 WAV 验证整条链路（不接麦克风）
 start.bat --wav samples\test16.wav --no-realtime
+```
+
+## 会议场景 30 秒上手
+
+1. **会前 30–60 秒**双击 `meeting.bat`，等终端出现 `开始监听（Ctrl+C 退出）...`。模型加载需要时间，别等会议开始了才启动。
+2. 确认会议软件（Zoom / Teams / 飞书 / 腾讯会议）的声音输出是 **Windows 默认扬声器/耳机**。启动时会打印实际捕获的设备名，核对一下。
+3. 加入会议。字幕浮窗出现在屏幕底部，中文约 1.5–2.5 秒后出现；浮窗点击穿透，不会挡住会议控件。
+4. 会后按 `Ctrl+C`，记录在 `transcripts/` 下的 JSONL/Markdown 里。
+
+常用变体：
+
+```bat
+:: 浮窗放顶部，避免挡住会议字幕/控制栏
+meeting.bat --overlay-position top
+
+:: 只看中文
+meeting.bat --overlay-no-english
+
+:: 字小一点
+meeting.bat --overlay-font-size 24
 ```
 
 ## 字幕浮窗
@@ -261,6 +283,7 @@ uv run python scripts\check_system_audio.py
 
 ```text
 start.bat                 一键启动
+meeting.bat               会议模式（系统音频 + 浮窗，字号 30）
 main.py                   参数、调度、生命周期
 app/audio.py              麦克风 / 系统回环 / WAV、VAD 断句
 app/asr.py                faster-whisper 封装 + CUDA DLL 路径
@@ -294,10 +317,10 @@ Quick start:
 ```bat
 git clone https://github.com/sihy233/live-interpreter.git
 cd live-interpreter
-start.bat --source system --overlay
+meeting.bat
 ```
 
-The first run downloads about 8GB of models. Windows 10/11 and an NVIDIA GPU with 8GB+ VRAM are recommended. See the Chinese sections above for details.
+`meeting.bat` captures system audio and shows the overlay. The first run downloads about 8GB of models. Windows 10/11 and an NVIDIA GPU with 8GB+ VRAM are recommended. See the Chinese sections above for details.
 
 ## 致谢
 

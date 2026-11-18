@@ -223,8 +223,8 @@ def main() -> int:
         elif args.source == "system":
             if args.device:
                 print("提示：--device 只对麦克风模式生效，系统音频模式已忽略。", flush=True)
-            print("音源：系统音频回环（默认扬声器）", flush=True)
             source = SystemSource()
+            print(f"音源：系统音频回环（{source.speaker_name}）", flush=True)
         else:
             import sounddevice as sd
 

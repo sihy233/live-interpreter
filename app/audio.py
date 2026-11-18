@@ -174,6 +174,7 @@ class SystemSource:
         speaker = sc.default_speaker()
         if speaker is None:
             raise RuntimeError("没有找到默认扬声器，无法捕获系统音频")
+        self.speaker_name = speaker.name
         try:
             mic = sc.get_microphone(str(speaker.name), include_loopback=True)
         except Exception as exc:
