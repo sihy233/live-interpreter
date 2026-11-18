@@ -10,6 +10,7 @@ Windows · 100% 本地 · Whisper + Hunyuan-MT + Ollama
 ![python](https://img.shields.io/badge/python-3.11-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![local](https://img.shields.io/badge/100%25-local-success)
+![tests](https://github.com/sihy233/live-interpreter/actions/workflows/tests.yml/badge.svg)
 
 <img src="docs/overlay.png" alt="置顶双语字幕浮窗" width="100%">
 
